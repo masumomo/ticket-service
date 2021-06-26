@@ -37,7 +37,7 @@ router.post(
         const user = User.build({ email, password });
         await user.save();
 
-        const userJwt = jsonwebtoken.sign({ id: user.id, email: user.email }, "asdf");
+        const userJwt = jsonwebtoken.sign({ id: user.id, email: user.email }, process.env.JWT_KEY!);
         req.session = { jwt: userJwt };
         res.status(200).send(user);
     }
