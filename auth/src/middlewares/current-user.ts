@@ -15,12 +15,10 @@ declare global {
 }
 
 export const currentUser = (
-    err: Error,
     req: Request,
     res: Response,
     next: NextFunction
 ) => {
-
     console.log('!req.session?.jwt :>> ', !req.session?.jwt);
     if (!req.session?.jwt) {
         return next();

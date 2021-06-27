@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 import { NotAuthorizedError } from "../errors/not-autherize-error";
 
 export const requireAuth = (
-    err: Error,
     req: Request,
     res: Response,
     next: NextFunction
