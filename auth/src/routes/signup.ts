@@ -20,8 +20,6 @@ router.post(
     ValidateRequest,
     async (req: Request, res: Response) => {
         const { email, password } = req.body;
-
-        console.log("Creating a user... :", email);
         const existingUser = await User.findOne({ email });
 
         if (existingUser) {
@@ -32,6 +30,7 @@ router.post(
 
         const userJwt = jsonwebtoken.sign({ id: user.id, email: user.email }, process.env.JWT_KEY!);
         req.session = { jwt: userJwt };
+
         res.status(200).send(user);
     }
 );

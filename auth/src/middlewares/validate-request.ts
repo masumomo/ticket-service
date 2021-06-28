@@ -4,7 +4,6 @@ import { CustomError } from "../errors/custom-error";
 import { RequestValidationError } from "../errors/request-validation-error";
 
 export const ValidateRequest = (
-    err: Error,
     req: Request,
     res: Response,
     next: NextFunction
