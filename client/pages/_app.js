@@ -18,7 +18,10 @@ AppComponent.getInitialProps = async (appContent) => {
     if (appContent.Component.getInitialProps) {
         pageProps = await appContent.Component.getInitialProps(appContent.ctx);
     }
-    return data;
+    return {
+        pageProps,
+        ...data
+    };
 };
 
 export default AppComponent;
