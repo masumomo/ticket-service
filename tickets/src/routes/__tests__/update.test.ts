@@ -25,7 +25,7 @@ it('returns a 401 if the user is not authenticated', async () => {
         .expect(200);
 
     await request(app)
-        .put(`/api/ticket/${res.body.id}`)
+        .put(`/api/tickets/${res.body.id}`)
         .set("Cookie", global.signin())
         .send(expectedTicket)
         .expect(401);
@@ -40,11 +40,10 @@ it('returns a 401 if the user does not own the ticket', async () => {
         .expect(200);
 
     await request(app)
-        .put(`/api/ticket/${res.body.id}`)
+        .put(`/api/tickets/${res.body.id}`)
         .set("Cookie", global.signin())
         .send(expectedTicket)
         .expect(401);
-
 });
 
 it('returns a 400 if the user provides an invalid title or price', async () => {
@@ -55,13 +54,13 @@ it('returns a 400 if the user provides an invalid title or price', async () => {
         .expect(200);
 
     await request(app)
-        .put(`/api/ticket/${res.body.id}`)
+        .put(`/api/tickets/${res.body.id}`)
         .set("Cookie", global.signin())
         .send({ price: 200 })
         .expect(400);
 
     await request(app)
-        .put(`/api/ticket/${res.body.id}`)
+        .put(`/api/tickets/${res.body.id}`)
         .set("Cookie", global.signin())
         .send({ title: "changed title" })
         .expect(400);
@@ -78,20 +77,20 @@ it('returns a 400 if the user provides an invalid title or price', async () => {
         .expect(200);
 
     await request(app)
-        .put(`/api/ticket/${res.body.id}`)
+        .put(`/api/tickets/${res.body.id}`)
         .set("Cookie", cookie)
         .send({ price: 200 })
         .expect(400);
 
 
     await request(app)
-        .put(`/api/ticket/${res.body.id}`)
+        .put(`/api/tickets/${res.body.id}`)
         .set("Cookie", cookie)
         .send({ price: -200 })
         .expect(400);
 
     await request(app)
-        .put(`/api/ticket/${res.body.id}`)
+        .put(`/api/tickets/${res.body.id}`)
         .set("Cookie", cookie)
         .send({ title: "changed title" })
         .expect(400);
@@ -108,13 +107,13 @@ it('updates the ticket provided valid inputs', async () => {
         .expect(200);
 
     res = await request(app)
-        .put(`/api/ticket/${res.body.id}`)
+        .put(`/api/tickets/${res.body.id}`)
         .set("Cookie", cookie)
         .send({ title: "changed title", price: 200 })
         .expect(200);
 
     res = await request(app)
-        .get(`/api/ticket/${res.body.id}`)
+        .get(`/api/tickets/${res.body.id}`)
         .set("Cookie", cookie)
         .expect(200);
 

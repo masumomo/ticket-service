@@ -5,7 +5,7 @@ import { NotFoundError } from '@masumomomo/ticket-common';
 const router = express.Router();
 
 router.get(
-    "/api/ticket/:id",
+    "/api/tickets/:id",
     async (req: Request, res: Response) => {
         const ticket = await Ticket.findById(req.params.id);
         if (!ticket) {

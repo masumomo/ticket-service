@@ -6,7 +6,7 @@ import { currentUser, NotAuthorizedError, NotFoundError, requireAuth, ValidateRe
 const router = express.Router();
 
 router.put(
-    "/api/ticket/:id",
+    "/api/tickets/:id",
     currentUser,
     requireAuth,
     [

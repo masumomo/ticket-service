@@ -6,7 +6,7 @@ it('returns a 404 if the ticket is not found', async () => {
     const id = new mongoose.Types.ObjectId().toHexString();
 
     await request(app)
-        .get(`/api/ticket/${id}`)
+        .get(`/api/tickets/${id}`)
         .expect(404);
 });
 
@@ -22,7 +22,7 @@ it('returns the ticket if the ticket is found', async () => {
         .expect(200);
 
     await request(app)
-        .get(`/api/ticket/${res.body.id}`)
+        .get(`/api/tickets/${res.body.id}`)
         .expect(200);
 
     expect(res.body.title).toEqual(expectedTicket.title);
